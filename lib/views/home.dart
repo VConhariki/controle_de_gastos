@@ -5,11 +5,17 @@ import 'package:controle_de_gastos/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  final Function _changeTheme;
+  Home(this._changeTheme);
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => _HomeState(_changeTheme);
 }
 
 class _HomeState extends State<Home> {
+  bool _isLight = true;
+  final Function _changeTheme;
+  _HomeState(this._changeTheme);
+
   final _transactions = [
     Transaction(
       id: 't1',
@@ -78,11 +84,21 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Meus Gastos'),
-        backgroundColor: Colors.purple,
+        // backgroundColor: Colors.purple,
         actions: [
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () => _openTransactionFormModal(context),
+            color: Colors.white,
+          ),
+          IconButton(
+            icon: _isLight
+                ? Icon(Icons.bedtime_outlined)
+                : Icon(Icons.wb_sunny_outlined),
+            onPressed: () {
+              _changeTheme(_isLight);
+              _isLight = !_isLight;
+            },
             color: Colors.white,
           ),
         ],
