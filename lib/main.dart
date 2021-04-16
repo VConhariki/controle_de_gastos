@@ -26,7 +26,7 @@ class _ExpensesAppState extends State<ExpensesApp> {
                       headline6: TextStyle(
                           fontFamily: 'OpenSans',
                           fontSize: 20,
-                          fontWeight: FontWeight.normal),
+                          fontWeight: FontWeight.bold),
                     ),
               ),
             )
@@ -36,7 +36,7 @@ class _ExpensesAppState extends State<ExpensesApp> {
                       headline6: TextStyle(
                         fontFamily: 'OpenSans',
                         fontSize: 20,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
               ),
