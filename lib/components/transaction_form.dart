@@ -13,6 +13,22 @@ class _TransactionFormState extends State<TransactionForm> {
   final titleController = TextEditingController();
   final valueController = TextEditingController();
 
+  DateTime data = DateTime.now();
+
+  _pickDate() async {
+    DateTime newDate = await showDatePicker(
+        context: context,
+        initialDate: data,
+        firstDate: DateTime(DateTime.now().year - 5),
+        lastDate: DateTime(DateTime.now().year + 5));
+
+    if (newDate != null) {
+      setState(() {
+        data = newDate;
+      });
+    }
+  }
+
   _submitForm() {
     final title = titleController.text;
     final value =
@@ -29,11 +45,12 @@ class _TransactionFormState extends State<TransactionForm> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            SizedBox(height: 20),
             TextField(
               controller: titleController,
               onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
-                labelText: 'Título',
+                labelText: 'Title',
               ),
             ),
             TextField(
@@ -41,8 +58,14 @@ class _TransactionFormState extends State<TransactionForm> {
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
-                labelText: 'Valor (R\$)',
+                labelText: 'Value (\$)',
               ),
+            ),
+            ListTile(
+              title:
+                  Text('purchase date: ${data.year}/${data.month}/${data.day}'),
+              trailing: Icon(Icons.calendar_today_outlined),
+              onTap: _pickDate,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

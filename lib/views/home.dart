@@ -16,44 +16,44 @@ class _HomeState extends State<Home> {
   final Function _changeTheme;
   _HomeState(this._changeTheme);
 
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Tênis nike',
-      value: 280.00,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de luz',
-      value: 99.63,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Tênis nike',
-      value: 280.00,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de luz',
-      value: 99.63,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Tênis nike',
-      value: 280.00,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de luz',
-      value: 99.63,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
+  //   Transaction(
+  //     id: 't1',
+  //     title: 'Tênis nike',
+  //     value: 280.00,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't2',
+  //     title: 'Conta de luz',
+  //     value: 99.63,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't1',
+  //     title: 'Tênis nike',
+  //     value: 280.00,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't2',
+  //     title: 'Conta de luz',
+  //     value: 99.63,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't1',
+  //     title: 'Tênis nike',
+  //     value: 280.00,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't2',
+  //     title: 'Conta de luz',
+  //     value: 99.63,
+  //     date: DateTime.now(),
+  //   ),
+  // ];
 
   _addTransaction(String title, double value) {
     final newTrnsaction = Transaction(
@@ -73,7 +73,8 @@ class _HomeState extends State<Home> {
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
         context: context,
-        backgroundColor: Colors.purple,
+        // isScrollControlled: true,
+        isScrollControlled: true,
         builder: (_) {
           return TransactionForm(_addTransaction);
         });
